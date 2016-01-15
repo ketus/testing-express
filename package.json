@@ -2,6 +2,7 @@
   "name": "testing-express",
   "version": "1.0.0",
   "description": "testing express",
+  "repository": "https://github.com/ketus/testing-express.git",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +10,7 @@
   "author": "ketus",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.14.2",
     "express": "^4.13.3",
     "jade": "^1.11.0"
   }

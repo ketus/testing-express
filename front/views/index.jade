@@ -8,3 +8,8 @@ html
         body.container
             h1 Home
             h3 #{title}
+            form(method='POST' action='/post-test')
+                input(type='text' id='firstName' name='firstName')
+                br
+                input(type='text' id='lastName' name='lastName')
+                input(type="submit")
