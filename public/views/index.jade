@@ -1,0 +1,30 @@
+doctype html
+html
+	title Test Express
+	head
+		link(type='text/css'
+		rel='styleSheet'
+		href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+		script(type='text/javascript'
+		src='https://code.jquery.com/jquery-2.2.0.min.js')
+	body.container
+		h1 Home
+		h3 #{title}
+		form.form-group(method='POST' action='/test')
+			input(type='text' id='firstname' name='firstname' value='watwat in the butt')
+			br
+			input(type='text' id='lastname' name='lastname')
+			br
+			input(type="submit")
+		script(type='text/javascript')
+			|	$.ajax({
+			| type: "POST",
+			|	url: '/test-json',
+			| data: JSON.stringify({
+			|		firstname: $('#firstname').val(),
+			|		lastname: "Programmer"
+			|	}),
+			|	dataType: "json",
+			|	contentType: "application/json"});
+
+

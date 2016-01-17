@@ -1,32 +1,38 @@
+"use strict";
+
 var express = require('express');
 var jade = require('jade');
-var bodyParser = require('body-parser');
+var favicon = require('serve-favicon');
+var apiCtrl = require('./controllers/apiController');
+var htmlCtrl = require('./controllers/htmlController');
+var db = require('./models/user');
 
-var app = express();
-var urlencodedParser = bodyParser.urlencoded({extended: false});
+
+
 var port = process.env.PORT || 3000;
 
-app.set('views', __dirname + '/front/views');
+var app = express();
+
+app.use(favicon(__dirname + '/favicon.gif'), function (rqe, res, next) {
+	next();
+});
+
+app.use('/', function (req, res, next) {
+	db.User.find({}, function (err, data) {
+		if(err) console.log(err);
+
+		console.log('Fetched user: ' + data);
+	});
+});
+
+app.set('views', __dirname + '/public/views');
 app.set('view engine', 'jade');
 
-app.get('/', function (req, res) {
-  res.render('index', { title: req.params.test });
+db.saveUser('Max', 'Kolonko', 'Ketus');
+
+app.listen(port, function () {
+	console.log('listening on port: ' + port);
 });
 
-app.post('/post-test', urlencodedParser, function (req, res) {
-  res.send('Yo!');
-  console.log(req.body.firstName);
-  console.log(req.body.lastName);
-});
-
-app.get('/:test', function (req, res, next) {
-  res.render('index', { title: req.params.test });
-  next();
-});
-
-app.get('/:test', function (req, res, next) {
-  console.log('outputting from url: ' + req.params.test);
-});
-
-app.listen(port);
-
+apiCtrl(app);
+htmlCtrl(app);
