@@ -23,12 +23,13 @@ app.use('/', function (req, res, next) {
 
 		console.log('Fetched user: ' + data);
 	});
+	next();
 });
 
 app.set('views', __dirname + '/public/views');
 app.set('view engine', 'jade');
 
-db.saveUser('Max', 'Kolonko', 'Ketus');
+//db.saveUser('Max', 'Kolonko', 'Ketus');
 
 app.listen(port, function () {
 	console.log('listening on port: ' + port);
