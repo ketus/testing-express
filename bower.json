@@ -1,0 +1,24 @@
+{
+  "name": "testing-express",
+  "description": "testing express",
+  "main": "app.js",
+  "authors": [
+    "ketus"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ketus/testing-express",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "angular": "angularjs#1.5.0-rc.1"
+  }
+}

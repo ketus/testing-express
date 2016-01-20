@@ -3,25 +3,24 @@
 var express = require('express');
 var jade = require('jade');
 var favicon = require('serve-favicon');
-var apiCtrl = require('./controllers/apiController');
-var htmlCtrl = require('./controllers/htmlController');
-var db = require('./models/user');
-
-
+var apiCtrl = require('./server/controllers/apiController');
+var htmlCtrl = require('./server/controllers/htmlController');
+var db = require('./server/models/user');
+var path = require('path');
 
 var port = process.env.PORT || 3000;
 
 var app = express();
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public', 'static', 'favicon.gif')));
 
-app.use(favicon(__dirname + '/favicon.gif'), function (rqe, res, next) {
-	next();
-});
+
 
 app.use('/', function (req, res, next) {
 	db.User.find({}, function (err, data) {
 		if(err) console.log(err);
 
-		console.log('Fetched user: ' + data);
+		var userData = data;
 	});
 	next();
 });

@@ -1,0 +1,9 @@
+<!DOCTYPE html><html><head><title>Test Express</title><link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script></head><body ng-app="Skeleton"><div ng-controller="MainController as ctrl" class="container"><h1>{{wat}}</h1><h3></h3><form method="POST" action="/test" class="form-group"><input type="text" id="firstname" name="firstname" value="watwat in the butt"><br><input type="text" id="lastname" name="lastname"><br><input type="submit"></form><script type="text/javascript" src="app.js"></script><script type="text/javascript">	$.ajax({
+type: "POST",
+	url: '/test-json',
+data: JSON.stringify({
+		firstname: $('#firstname').val(),
+		lastname: "Programmer"
+	}),
+	dataType: "json",
+	contentType: "application/json"});</script></div></body></html>
